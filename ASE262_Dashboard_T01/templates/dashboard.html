@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard de Solicitudes de Vacaciones</title>
+
+    <!-- Librería Plotly -->
+    <script src="https://cdn.plot.ly/plotly-3.3.0.min.js"></script>
+
+    <!-- Conexión con archivo CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/estilo.css') }}">
+</head>
+
+<body>
+
+    <!-- 1. ENCABEZADO DEL DASHBOARD -->
+    <header class="encabezado">
+        <h1>Dashboard Analítico de Vacaciones</h1>
+        <p>Gestión de Solicitudes | Datos obtenidos desde Google Sheets</p>
+    </header>
+
+
+    <!-- 2. TARJETAS DE INDICADORES KPI -->
+    <section class="contenedor-kpis">
+
+        <div class="tarjeta-kpi">
+            <h3>Total de Solicitudes</h3>
+            <h2>{{ total_solicitudes }}</h2>
+            <p>Solicitudes recibidas</p>
+        </div>
+
+        <div class="tarjeta-kpi">
+            <h3>Solicitudes Aprobadas</h3>
+            <h2>{{ total_aprobadas }}</h2>
+            <p>Vacaciones autorizadas</p>
+        </div>
+
+        <div class="tarjeta-kpi">
+            <h3>Vacaciones Prolongadas</h3>
+            <h2>{{ total_prolongadas }}</h2>
+            <p>Solicitudes de 10 o más días</p>
+        </div>
+
+    </section>
+
+
+    <!-- 3. TÍTULO DE LOS GRÁFICOS -->
+    <div class="titulo-seccion">
+        <h2>Análisis General de Solicitudes</h2>
+        <p>Visualizaciones interactivas de la gestión de vacaciones</p>
+    </div>
+
+
+    <!-- 4. GRÁFICOS INTERACTIVOS (LOS 6 GRÁFICOS) -->
+    <section class="contenedor-graficos">
+
+        <!-- GRÁFICO 1: DÍAS POR DEPARTAMENTO -->
+        <div class="tarjeta-grafico">
+            {{ grafico1 | safe }}
+        </div>
+
+        <!-- GRÁFICO 2: DISTRIBUCIÓN POR ESTADO -->
+        <div class="tarjeta-grafico">
+            {{ grafico2 | safe }}
+        </div>
+
+        <!-- GRÁFICO 3: SOLICITUDES POR DEPARTAMENTO -->
+        <div class="tarjeta-grafico">
+            {{ grafico3 | safe }}
+        </div>
+
+        <!-- GRÁFICO 4: PROMEDIO DE DÍAS POR ESTADO -->
+        <div class="tarjeta-grafico">
+            {{ grafico4 | safe }}
+        </div>
+
+        <!-- GRÁFICO 5: ALERTA DE VACACIONES PROLONGADAS -->
+        <div class="tarjeta-grafico">
+            {{ grafico5 | safe }}
+        </div>
+
+        <!-- GRÁFICO 6: CONTEO POR ESTADO ESPECÍFICO -->
+        <div class="tarjeta-grafico">
+            {{ grafico6 | safe }}
+        </div>
+
+    </section>
+
+
+    <!-- 5. PIE DE PÁGINA -->
+    <footer class="pie-pagina">
+        <p>ASE262 | Programación Estructurada</p>
+        <p>Proyecto Integrador - Dashboard de Vacaciones</p>
+    </footer>
+
+</body>
+</html>
